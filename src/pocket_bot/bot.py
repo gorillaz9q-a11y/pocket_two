@@ -996,34 +996,34 @@ def _determine_indicator_status(category: str, snapshot: TradingViewSnapshot) ->
     return None
 
 
-def _build_technicals_text(language: str, snapshot: TradingViewSnapshot | None) -> str:
-    header = TECHNICALS_HEADER_LABELS.get(language) or TECHNICALS_HEADER_LABELS["en"]
-    categories = list(TECHNICALS_CATEGORY_ORDER)
-    random.shuffle(categories)
+# def _build_technicals_text(language: str, snapshot: TradingViewSnapshot | None) -> str:
+#     header = TECHNICALS_HEADER_LABELS.get(language) or TECHNICALS_HEADER_LABELS["en"]
+#     categories = list(TECHNICALS_CATEGORY_ORDER)
+#     random.shuffle(categories)
 
-    lines = [header]
-    for key in categories:
-        label = TECHNICALS_CATEGORY_LABELS[key].get(language) or TECHNICALS_CATEGORY_LABELS[key]["en"]
-        summary_text: str
-        if snapshot is not None:
-            status_key = _determine_indicator_status(key, snapshot)
-            if status_key:
-                translated = _get_status_translation(key, status_key, language)
-                if translated:
-                    summary_text = translated
-                else:
-                    summary_text = ""
-            else:
-                summary_text = ""
-        else:
-            summary_text = ""
+#     lines = [header]
+#     for key in categories:
+#         label = TECHNICALS_CATEGORY_LABELS[key].get(language) or TECHNICALS_CATEGORY_LABELS[key]["en"]
+#         summary_text: str
+#         if snapshot is not None:
+#             status_key = _determine_indicator_status(key, snapshot)
+#             if status_key:
+#                 translated = _get_status_translation(key, status_key, language)
+#                 if translated:
+#                     summary_text = translated
+#                 else:
+#                     summary_text = ""
+#             else:
+#                 summary_text = ""
+#         else:
+#             summary_text = ""
 
-        if not summary_text:
-            fallback = random.choice(TECHNICALS_SUMMARIES[key])
-            summary_text = fallback.get(language) or fallback.get("en") or ""
+#         if not summary_text:
+#             fallback = random.choice(TECHNICALS_SUMMARIES[key])
+#             summary_text = fallback.get(language) or fallback.get("en") or ""
 
-        lines.append(f"   📊 {label}: {summary_text}")
-    return "\n".join(lines)
+#         lines.append(f"   📊 {label}: {summary_text}")
+#     return "\n".join(lines)
 
 
 def _build_market_overview_text(language: str) -> str:
@@ -1049,7 +1049,7 @@ def _format_manual_signal_message(
     current_value: float,
     support: float,
     resistance: float,
-    technical_snapshot: TradingViewSnapshot | None,
+    # technical_snapshot: TradingViewSnapshot | None,
 ) -> str:
     del language
     message_language = SIGNAL_MESSAGE_LANGUAGE
@@ -1064,7 +1064,7 @@ def _format_manual_signal_message(
     time_line = f"⏱️ Expiration: {time_text} min"
 
     price_block = _build_price_levels_text(message_language, current_value, support, resistance)
-    technicals_block = _build_technicals_text(message_language, technical_snapshot)
+    # technicals_block = _build_technicals_text(message_language, technical_snapshot)
     market_block = _build_market_overview_text(message_language)
 
     parts = [
@@ -1073,8 +1073,8 @@ def _format_manual_signal_message(
         "",
         SECTION_SEPARATOR,
         price_block,
-        SECTION_SEPARATOR,
-        technicals_block,
+        # SECTION_SEPARATOR,
+        # technicals_block,
         SECTION_SEPARATOR,
         market_block,
     ]
@@ -1088,7 +1088,7 @@ def _format_manual_signal_fallback(
     time_minutes: float,
     language: str,
     notice: str,
-    technical_snapshot: TradingViewSnapshot | None,
+    # technical_snapshot: TradingViewSnapshot | None,
     current_value: float | None = None,
     support: float | None = None,
     resistance: float | None = None,
@@ -1106,7 +1106,7 @@ def _format_manual_signal_fallback(
     time_line = f"⏱️ Expiration: {time_text} min"
 
     price_block = _build_price_levels_text(message_language, current_value, support, resistance)
-    technicals_block = _build_technicals_text(message_language, technical_snapshot)
+    # technicals_block = _build_technicals_text(message_language, technical_snapshot)
     market_block = _build_market_overview_text(message_language)
 
     parts = [
@@ -1120,8 +1120,8 @@ def _format_manual_signal_fallback(
         [
             SECTION_SEPARATOR,
             price_block,
-            SECTION_SEPARATOR,
-            technicals_block,
+            # SECTION_SEPARATOR,
+            # technicals_block,
             SECTION_SEPARATOR,
             market_block,
         ]
@@ -1774,7 +1774,7 @@ def _generate_auto_signal_payload() -> dict[str, Any]:
 
 def _format_auto_signal_caption(
     payload: dict[str, Any],
-    technical_snapshot: TradingViewSnapshot | None,
+    # technical_snapshot: TradingViewSnapshot | None,
 ) -> str:
     pair = payload["pair"]
     direction = payload["direction"]
@@ -1792,7 +1792,7 @@ def _format_auto_signal_caption(
         support,
         resistance,
     )
-    technicals_block = _build_technicals_text(SIGNAL_MESSAGE_LANGUAGE, technical_snapshot)
+    # technicals_block = _build_technicals_text(SIGNAL_MESSAGE_LANGUAGE, technical_snapshot)
     market_block = _build_market_overview_text(SIGNAL_MESSAGE_LANGUAGE)
 
     parts = [
@@ -1801,8 +1801,8 @@ def _format_auto_signal_caption(
         "",
         SECTION_SEPARATOR,
         price_block,
-        SECTION_SEPARATOR,
-        technicals_block,
+        # SECTION_SEPARATOR,
+        # technicals_block,
         SECTION_SEPARATOR,
         market_block,
     ]
