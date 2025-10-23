@@ -2671,7 +2671,6 @@ async def _send_language_prompt(
     *,
     include_back: bool,
 ) -> None:
-    LOGGER.info(f"Начало _send_language_prompt для {user_data}")  # <-- ДОБАВЬТЕ ЭТО
     language = user_data.get(LANGUAGE_KEY, DEFAULT_LANGUAGE)
     keyboard = _build_language_keyboard(include_back, language)
     await _send_tracked_message(
@@ -2683,7 +2682,6 @@ async def _send_language_prompt(
         text=_LANGUAGE_PROMPT,
         reply_markup=keyboard,
     )
-    LOGGER.info(f"Конец _send_language_prompt для {user_data}")  # <-- ДОБАВЬТЕ ЭТО
 
 
 async def _send_intro_prompt(
@@ -2693,7 +2691,6 @@ async def _send_intro_prompt(
     language: str,
     user_data: dict[str, Any],
 ) -> None:
-    LOGGER.info(f"Начало _send_intro_prompt для {user_id}")  # <-- ДОБАВЬТЕ ЭТО
     _set_user_stage(context.bot_data, user_id, STAGE_INTRO)
     body = _get_text("intro_description", language)
     keyboard = _build_intro_keyboard(language)
@@ -2706,7 +2703,6 @@ async def _send_intro_prompt(
         text=body,
         reply_markup=keyboard,
     )
-    LOGGER.info(f"Конец _send_intro_prompt для {user_id}")  # <-- ДОБАВЬТЕ ЭТО
 
 
 async def _send_subscription_prompt(
