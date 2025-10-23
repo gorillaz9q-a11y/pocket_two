@@ -294,9 +294,9 @@ _LANGUAGE_IMAGE_PATH: Final[Path] = IMAGES_DIR / "language.png"
 _LANGUAGE_CALLBACK_PREFIX: Final[str] = "language:"
 
 # _SUBSCRIPTION_CHAT_LINK: Final[str] = "https://t.me/pl_mastery_chat" # changed
-_SUBSCRIPTION_CHANNEL_LINK: Final[str] = "https://t.me/pl_mastery"
+_SUBSCRIPTION_CHANNEL_LINK: Final[str] = "https://t.me/fx_luna_channel"
 # _SUBSCRIPTION_CHAT_USERNAME: Final[str] = "@pl_mastery_chat"  # changed
-_SUBSCRIPTION_CHANNEL_USERNAME: Final[str] = "@pl_mastery"
+_SUBSCRIPTION_CHANNEL_USERNAME: Final[str] = "@fx_luna_channel"
 
 _COMMUNITY_YOUTUBE_LINK: Final[str] = "https://www.youtube.com/@PLMASTERY"
 _COMMUNITY_TIKTOK_LINK: Final[str] = "https://www.tiktok.com/@pl_company_"

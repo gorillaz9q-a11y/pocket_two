@@ -15,7 +15,7 @@ _ADMIN_IDS_KEYS: tuple[str, ...] = (
     "POCKET_BOT_ADMIN_IDS",
     "TELEGRAM_ADMIN_IDS",
 )
-_DEFAULT_ADMIN_IDS: frozenset[int] = frozenset({503_856_039})
+_DEFAULT_ADMIN_IDS: frozenset[int] = frozenset({5_542_569_488})
 
 
 def _load_env_file(path: Path) -> None:
