@@ -3142,7 +3142,7 @@ async def _finalize_manual_signal(
                 time_minutes=float(time_value),
                 language=SIGNAL_MESSAGE_LANGUAGE,
                 notice=notice_en,
-                technical_snapshot=None,
+                # technical_snapshot=None,
             )
         else:
             has_price_levels = (
@@ -3160,7 +3160,7 @@ async def _finalize_manual_signal(
                     time_minutes=float(time_value),
                     language=SIGNAL_MESSAGE_LANGUAGE,
                     notice=notice_en,
-                    technical_snapshot=snapshot,
+                    # technical_snapshot=snapshot,
                     current_value=snapshot.close,
                     support=snapshot.support,
                     resistance=snapshot.resistance,
@@ -3177,7 +3177,7 @@ async def _finalize_manual_signal(
                     current_value=close_value,
                     support=support_value,
                     resistance=resistance_value,
-                    technical_snapshot=snapshot,
+                    # technical_snapshot=snapshot,
                 )
 
         image_path = _resolve_signal_image(pair, "BUY" if direction == "buy" else "SELL")
