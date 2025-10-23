@@ -1853,7 +1853,8 @@ async def _execute_auto_signal(
             payload["resistance"] = snapshot.resistance
     payload["snapshot"] = snapshot
 
-    raw_caption = _format_auto_signal_caption(payload, snapshot)
+    # raw_caption = _format_auto_signal_caption(payload, snapshot)
+    raw_caption = _format_auto_signal_caption(payload)
     caption, was_truncated = _prepare_caption_text(raw_caption)
     image_path = _resolve_signal_image(
         payload["pair"], "BUY" if payload["direction"] == "buy" else "SELL"
